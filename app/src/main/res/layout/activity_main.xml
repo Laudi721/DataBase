@@ -28,8 +28,8 @@
                 android:layout_height="match_parent"
                 android:layout_weight="34"
                 android:ems="10"
-                android:inputType="textPersonName"
-                android:text="Podaj imie" />
+                android:hint="Podaj imie"
+                android:inputType="textPersonName" />
 
             <EditText
                 android:id="@+id/editTextText_id_nazwisko"
@@ -37,8 +37,8 @@
                 android:layout_height="57dp"
                 android:layout_weight="34"
                 android:ems="10"
-                android:inputType="textPersonName"
-                android:text="Podaj  nazwisko" />
+                android:hint="Podaj  nazwisko"
+                android:inputType="textPersonName" />
 
         </TableRow>
 
@@ -52,8 +52,8 @@
                 android:layout_height="57dp"
                 android:layout_weight="34"
                 android:ems="10"
-                android:inputType="textPersonName"
-                android:text="Podaj PESEL" />
+                android:hint="Podaj PESEL"
+                android:inputType="textPersonName" />
 
             <EditText
                 android:id="@+id/editTextText_id_adresZamieszkania"
@@ -61,8 +61,8 @@
                 android:layout_height="57dp"
                 android:layout_weight="34"
                 android:ems="10"
-                android:inputType="textPersonName"
-                android:text="Podaj adres zam" />
+                android:hint="Podaj a. zamieszkania"
+                android:inputType="textPersonName" />
         </TableRow>
 
         <TableRow
@@ -87,14 +87,9 @@
                 android:id="@+id/button_insert"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_weight="34"
                 android:text="Insert" />
 
-            <Button
-                android:id="@+id/button_select"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="34"
-                android:text="Select" />
         </TableRow>
 
         <TableRow
