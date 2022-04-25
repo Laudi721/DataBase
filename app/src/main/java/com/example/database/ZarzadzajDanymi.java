@@ -14,8 +14,8 @@ public class ZarzadzajDanymi
     public static final String TABLE_ROW_NAME = "name";
     public static final String TABLE_ROW_SURNAME = "surname";
     public static final String TABLE_ROW_PESEL = "PESEL";
-    public static final String TABLE_ROW_ADDRESS = "_id";
-    public static final String TABLE_ROW_PHONE = "_id";
+    public static final String TABLE_ROW_ADDRESS = "address";
+    public static final String TABLE_ROW_PHONE = "phone";
 
     public static final String DB_NAME = "personal_data_db";
     public static final int DB_VERSION = 1;
@@ -52,12 +52,12 @@ public class ZarzadzajDanymi
         CustomSQLiteOpenHelper helper = new CustomSQLiteOpenHelper(context);
         db = helper.getWritableDatabase();
     }
-    public void insert(String name, String surname, String pesel, String address, String phone)
+    public void insert(String name, String surname, String PESEL, String address, String phone)
     {
         String query = "INSERT INTO" + TABLE_ROW_NAME + TABLE_ROW_SURNAME
                 + TABLE_ROW_PESEL + TABLE_ROW_ADDRESS + TABLE_ROW_PHONE
                 + "VALUE (" +
-                name + ", " + surname + ", " + pesel + ", " + address + ", " + phone + ");";
+                name + ", " + surname + ", " + PESEL + ", " + address + ", " + phone + ");";
         Log.i("insert() = ", query);
         db.execSQL(query);
     }

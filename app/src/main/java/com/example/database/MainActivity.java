@@ -5,8 +5,12 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.EditText;
+import android.view.View;
+import android.util.Log;
+import android.database.Cursor;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements  View.OnClickListener
+{
 
     public Button btn_insert;
     public EditText edit_imie;
@@ -14,6 +18,8 @@ public class MainActivity extends AppCompatActivity {
     public EditText edit_pesel;
     public EditText edit_adresZamieszkania;
     public EditText edit_nrTelefonu;
+
+    ZarzadzajDanymi zd;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,5 +32,24 @@ public class MainActivity extends AppCompatActivity {
         edit_pesel = (EditText) findViewById(R.id.editTextText_id_pesel);
         edit_adresZamieszkania = (EditText) findViewById(R.id.editTextText_id_adresZamieszkania);
         edit_nrTelefonu = (EditText) findViewById(R.id.editTextPhone__id_nrTelefonu);
+
+        zd = new ZarzadzajDanymi(this);
+
+        btn_insert.setOnClickListener(this);
+    }
+
+    @Override
+    public void onClick(View v)
+    {
+        switch(v.getId())
+        {
+            case R.id.button_insert:
+                zd.insert(edit_imie.getText().toString(),
+                        edit_nazwisko.getText().toString(),
+                        edit_pesel.getText().toString(),
+                        edit_adresZamieszkania.getText().toString(),
+                        edit_nrTelefonu.getText().toString());
+                break;
+        }
     }
 }
