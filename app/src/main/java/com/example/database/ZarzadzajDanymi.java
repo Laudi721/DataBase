@@ -17,8 +17,9 @@ public class ZarzadzajDanymi
     public static final String TABLE_ROW_ADDRESS = "address";
     public static final String TABLE_ROW_PHONE = "phone";
 
-    public static final String DB_NAME = "personal_data_db";
+    public static final String DB_NAME = "names_and_surnames";
     public static final int DB_VERSION = 1;
+    public static final String TABLE_N_AND_S = "names_and_surnames";
 
     private class CustomSQLiteOpenHelper extends SQLiteOpenHelper
     {
@@ -31,12 +32,13 @@ public class ZarzadzajDanymi
         public void onCreate(SQLiteDatabase db)
         {
             String newTableQueryString = "create table "
-                    + TABLE_ROW_ID + " (integer primary key autoincrement not null,"
-                    + TABLE_ROW_NAME
-                    + TABLE_ROW_SURNAME
-                    + TABLE_ROW_PESEL
-                    + TABLE_ROW_ADDRESS
-                    + TABLE_ROW_PHONE;
+                    + TABLE_N_AND_S + " ("
+                    + TABLE_ROW_ID + " integer primary key autoincrement not null,"
+                    + TABLE_ROW_NAME + " text,"
+                    + TABLE_ROW_SURNAME + " text,"
+                    + TABLE_ROW_PESEL + " text,"
+                    + TABLE_ROW_ADDRESS + " text,"
+                    + TABLE_ROW_PHONE + " text);";
             db.execSQL(newTableQueryString);
         }
 
@@ -54,10 +56,14 @@ public class ZarzadzajDanymi
     }
     public void insert(String name, String surname, String PESEL, String address, String phone)
     {
-        String query = "INSERT INTO" + TABLE_ROW_NAME + TABLE_ROW_SURNAME
-                + TABLE_ROW_PESEL + TABLE_ROW_ADDRESS + TABLE_ROW_PHONE
-                + "VALUE (" +
-                name + ", " + surname + ", " + PESEL + ", " + address + ", " + phone + ");";
+        String query = "INSERT INTO " + TABLE_N_AND_S + " ("
+                + TABLE_ROW_NAME + ", "
+                + TABLE_ROW_SURNAME + ", "
+                + TABLE_ROW_PESEL + ", "
+                + TABLE_ROW_ADDRESS + ", "
+                + TABLE_ROW_PHONE +") "
+                + "VALUES ("
+                + "'" + name + "'" + ", " + "'" + surname + "'" + ", " + "'" + PESEL + "'" + ", " + "'" + address + "'" +", " + "'" + phone + "');";
         Log.i("insert() = ", query);
         db.execSQL(query);
     }

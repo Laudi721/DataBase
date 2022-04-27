@@ -3,6 +3,7 @@ package com.example.database;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.provider.ContactsContract;
 import android.widget.Button;
 import android.widget.EditText;
 import android.view.View;
@@ -31,7 +32,7 @@ public class MainActivity extends AppCompatActivity implements  View.OnClickList
         edit_nazwisko = (EditText) findViewById(R.id.editTextText_id_nazwisko);
         edit_pesel = (EditText) findViewById(R.id.editTextText_id_pesel);
         edit_adresZamieszkania = (EditText) findViewById(R.id.editTextText_id_adresZamieszkania);
-        edit_nrTelefonu = (EditText) findViewById(R.id.editTextPhone__id_nrTelefonu);
+        edit_nrTelefonu = (EditText) findViewById(R.id.editTextPhone_id_phone);
 
         zd = new ZarzadzajDanymi(this);
 
@@ -41,15 +42,11 @@ public class MainActivity extends AppCompatActivity implements  View.OnClickList
     @Override
     public void onClick(View v)
     {
-        switch(v.getId())
-        {
-            case R.id.button_insert:
-                zd.insert(edit_imie.getText().toString(),
-                        edit_nazwisko.getText().toString(),
-                        edit_pesel.getText().toString(),
-                        edit_adresZamieszkania.getText().toString(),
-                        edit_nrTelefonu.getText().toString());
-                break;
-        }
+        zd.insert(edit_imie.getText().toString(),
+                edit_nazwisko.getText().toString(),
+                edit_pesel.getText().toString(),
+                edit_adresZamieszkania.getText().toString(),
+                edit_nrTelefonu.getText().toString());
+
     }
 }
