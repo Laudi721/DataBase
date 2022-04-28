@@ -1,6 +1,7 @@
 package com.example.database;
 
 import android.content.Context;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.renderscript.Sampler;
@@ -68,5 +69,12 @@ public class ZarzadzajDanymi
                 + "'" + name + "'" + ", " + "'" + surname + "'" + ", " + "'" + PESEL + "'" + ", " + "'" + address + "'" +", " + "'" + phone + "');";
         Log.i("insert() = ", query);
         db.execSQL(query);
+    }
+
+    public Cursor SelectAll()
+    {
+        Cursor cursor = db.rawQuery("SELECT * from " + TABLE_ROW_SURNAME, null);
+
+        return cursor;
     }
 }

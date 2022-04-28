@@ -18,6 +18,7 @@ public class MainActivity extends AppCompatActivity implements  View.OnClickList
 {
 
     public Button btn_insert;
+    public Button btn_showData;
     public EditText edit_imie;
     public EditText edit_nazwisko;
     public EditText edit_pesel;
@@ -45,6 +46,7 @@ public class MainActivity extends AppCompatActivity implements  View.OnClickList
         setContentView(R.layout.activity_main);
 
         btn_insert = (Button) findViewById(R.id.button_insert);
+        btn_showData = (Button) findViewById(R.id.button_showData);
         edit_imie = (EditText) findViewById(R.id.editTextText_id_imie);
         edit_nazwisko = (EditText) findViewById(R.id.editTextText_id_nazwisko);
         edit_pesel = (EditText) findViewById(R.id.editTextText_id_pesel);
@@ -54,6 +56,15 @@ public class MainActivity extends AppCompatActivity implements  View.OnClickList
         zd = new ZarzadzajDanymi(this);
 
         btn_insert.setOnClickListener(this);
+        btn_showData.setOnClickListener(this);
+    }
+
+    public void showData(Cursor cursor)
+    {
+        while(cursor.moveToNext())
+        {
+            Log.i(cursor.getString(1), cursor.getString(2));
+        }
     }
 
     @Override
@@ -80,10 +91,20 @@ public class MainActivity extends AppCompatActivity implements  View.OnClickList
         if(edit_nrTelefonu.length() == 0) { nrTelefonu = getRandomString(); }
         else {  nrTelefonu = edit_nrTelefonu.getText().toString(); }
 
-        zd.insert(imie,
-                nazwisko,
-                pesel,
-                adresZamieszkania,
-                nrTelefonu);
+        switch(v.getId())
+        {
+            case R.id.button_insert:
+                zd.insert(imie,
+                        nazwisko,
+                        pesel,
+                        adresZamieszkania,
+                        nrTelefonu);
+                break;
+
+            case R.id.button_showData:
+                showData(zd.SelectAll());
+                break;
+        }
+
     }
 }
