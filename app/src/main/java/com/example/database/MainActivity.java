@@ -10,6 +10,10 @@ import android.view.View;
 import android.util.Log;
 import android.database.Cursor;
 
+import java.util.Arrays;
+import java.util.Random;
+import java.util.concurrent.ScheduledThreadPoolExecutor;
+
 public class MainActivity extends AppCompatActivity implements  View.OnClickListener
 {
 
@@ -21,6 +25,19 @@ public class MainActivity extends AppCompatActivity implements  View.OnClickList
     public EditText edit_nrTelefonu;
 
     ZarzadzajDanymi zd;
+
+    private String getRandomString()
+    {
+        StringBuffer randStr = new StringBuffer();
+        Random rnd = new Random();
+
+        for(int i = 0; i < rnd.nextInt(40); i++)
+        {
+            randStr.append((char) (rnd.nextInt(126-40) + 40));
+        }
+
+        return  randStr.toString();
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,11 +59,31 @@ public class MainActivity extends AppCompatActivity implements  View.OnClickList
     @Override
     public void onClick(View v)
     {
-        zd.insert(edit_imie.getText().toString(),
-                edit_nazwisko.getText().toString(),
-                edit_pesel.getText().toString(),
-                edit_adresZamieszkania.getText().toString(),
-                edit_nrTelefonu.getText().toString());
+        String imie = "";
+        String nazwisko = "";
+        String pesel = "";
+        String adresZamieszkania = "";
+        String nrTelefonu = "";
 
+        if(edit_imie.length() == 0) { imie = getRandomString(); }
+        else {  imie = edit_imie.getText().toString(); }
+
+        if(edit_nazwisko.length() == 0) { nazwisko = getRandomString(); }
+        else { nazwisko = edit_nazwisko.getText().toString(); }
+
+        if(edit_pesel.length() == 0) { pesel = getRandomString(); }
+        else {  pesel = edit_pesel.getText().toString(); }
+
+        if(edit_adresZamieszkania.length() == 0) { adresZamieszkania = getRandomString(); }
+        else {  adresZamieszkania = edit_adresZamieszkania.getText().toString(); }
+
+        if(edit_nrTelefonu.length() == 0) { nrTelefonu = getRandomString(); }
+        else {  nrTelefonu = edit_nrTelefonu.getText().toString(); }
+
+        zd.insert(imie,
+                nazwisko,
+                pesel,
+                adresZamieszkania,
+                nrTelefonu);
     }
 }

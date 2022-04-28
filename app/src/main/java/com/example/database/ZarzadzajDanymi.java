@@ -6,6 +6,8 @@ import android.database.sqlite.SQLiteOpenHelper;
 import android.renderscript.Sampler;
 import android.util.Log;
 
+import java.util.Random;
+
 public class ZarzadzajDanymi
 {
     private SQLiteDatabase db;
