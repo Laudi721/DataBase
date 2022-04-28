@@ -73,7 +73,7 @@ public class ZarzadzajDanymi
 
     public Cursor SelectAll()
     {
-        Cursor cursor = db.rawQuery("SELECT * from " + TABLE_ROW_SURNAME, null);
+        Cursor cursor = db.rawQuery("SELECT * from " + TABLE_N_AND_S, null);
 
         return cursor;
     }

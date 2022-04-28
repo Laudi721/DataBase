@@ -3,16 +3,13 @@ package com.example.database;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
-import android.provider.ContactsContract;
 import android.widget.Button;
 import android.widget.EditText;
 import android.view.View;
 import android.util.Log;
 import android.database.Cursor;
-
-import java.util.Arrays;
 import java.util.Random;
-import java.util.concurrent.ScheduledThreadPoolExecutor;
+
 
 public class MainActivity extends AppCompatActivity implements  View.OnClickListener
 {
@@ -63,7 +60,7 @@ public class MainActivity extends AppCompatActivity implements  View.OnClickList
     {
         while(cursor.moveToNext())
         {
-            Log.i(cursor.getString(1), cursor.getString(2));
+            Log.i(cursor.getString(1), cursor.getString(5));
         }
     }
 
