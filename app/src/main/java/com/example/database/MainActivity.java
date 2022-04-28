@@ -60,7 +60,8 @@ public class MainActivity extends AppCompatActivity implements  View.OnClickList
     {
         while(cursor.moveToNext())
         {
-            Log.i(cursor.getString(1), cursor.getString(5));
+            Log.i(cursor.getString(1), cursor.getString(2));
+
         }
     }
 
